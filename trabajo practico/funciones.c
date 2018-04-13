@@ -1,6 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+float PedidoNum (void)
+{
+    int esNum;
+    float Numero;
+
+    printf("Ingrese el numero: \n");
+    esNum=scanf("%f", &Numero); //Valida que sea un numero
+    fflush(stdin);
+
+    while(esNum == 0)
+    {
+        printf("No es un numero, por favor, ingrese un numero: \n");
+        esNum=scanf("%f", &Numero);
+        fflush(stdin);
+    }
+        return Numero;
+}
+
+int Entero (float a) //validacion si un numero es entero o con decimal
+{
+    int numEntero = a;
+    float numDecimal = a;
+    if ((numEntero - numDecimal) == 0)
+        return 1;
+    else
+        return 0;
+}
+
 float sumar (float a, float b)//operacion de suma
 {
     float resultado; //Creo la variable resultado
@@ -41,14 +69,17 @@ float multiplicar (float a, float b)//operacion de multiplicacion
     return  resultado;// Devuelvo el valor de resultado
 }
 
-unsigned long int factorial (int a)// operacion de factorial
+unsigned long int factorial (float a)// operacion de factorial
 {
-    int i;//creo las variables para llevar a cabo la factoriazacion
-    unsigned long int facto = 1;
-    if (a >= 13 || a < 0)
-    {
+    int i; //contador
+    unsigned long int facto = 1; //unsigned long int ya que el resultado es amplio.
+
+    if (Entero ( a ) == 0)//si el numero contiene decimales devuelve un mensaje de error
+        printf("No se puede factorear numeros con decimales, solo numeros del 0 al 12\n");
+
+    else if (a >= 13 || a < 0) //Compruebo que el numero no sea negativo o mayor a 12
         printf("No se puede factorizar numeros mayores a 12 o menores a 0\n");
-    }
+
     else {
     for (i = a; i> 0; i -- ) // operacion para factoriazar
     {
@@ -58,3 +89,4 @@ unsigned long int factorial (int a)// operacion de factorial
     }
     return facto;// Devuelvo el valor facto
 }
+

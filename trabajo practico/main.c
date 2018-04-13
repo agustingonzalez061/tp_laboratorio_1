@@ -23,13 +23,11 @@ int main()
         switch (opcion)
         {
             case 1: // Operacion de primer numero
-                printf("El primer numero es : ");
-                scanf("%f", &primero);
+                primero = PedidoNum();
                 system("cls"); //Uso esta funcion para limpiar pantalla
                 break;
             case 2: // Operacion de segundo numero
-                printf("El segundo numero es : ");
-                scanf("%f", &segundo);
+                segundo = PedidoNum();
                 system("cls");
                 break;
             case 3:// Operacion de suma
